@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Init') {
             steps {
-                sh 'cd var/lib/jenkins/workspace/pipeline/'
+                sh 'cd var/lib/jenkins/workspace/terraform_ci_cd/'
                 sh 'terraform init'
             }
         }
