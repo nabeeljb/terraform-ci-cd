@@ -3,22 +3,18 @@ pipeline {
     stages {
         stage('Cloning repository') {
             steps {
-                git url: 'https://github.com/your-repo-url.git', branch: 'master'
+                https://github.com/nabeeljb/terraform-code-for-create-resource.git, branch: 'main'
             }
         }
-        stage('Build') {
+        stage('init') {
             steps {
-                sh './gradlew build'
+                sh 'cd var/lib/jenkins/workspace/pipeline/'
+                sh 'terraform init'
             }
         }
-        stage('Test') {
+        stage('apply') {
             steps {
-                sh './gradlew test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh './gradlew deploy'
+                sh 'terraform apply --auto-approve'
             }
         }
     }
