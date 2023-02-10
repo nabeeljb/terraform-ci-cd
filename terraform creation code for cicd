@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Cloning repository') {
+            steps {
+                git url: 'https://github.com/your-repo-url.git', branch: 'master'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh './gradlew build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './gradlew test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './gradlew deploy'
+            }
+        }
+    }
+}
