@@ -2,20 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Cloning repository') {
+        stage('Download Image') {
             steps {
-                git url: 'https://github.com/nabeeljb/terraform-code-for-create-resource.git', branch: 'main'
-            }
-        }
-        stage('Init') {
-            steps {
-                sh 'cd var/lib/jenkins/workspace/terraform_ci_cd/'
-                sh 'terraform init'
-            }
-        }
-        stage('Apply') {
-            steps {
-                sh 'terraform apply --auto-approve'
+                sh "curl -o https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDQoRrXeqAxBG2SADi_MYIlhy17-qkhSE8Ph6E6ceWug&s"
             }
         }
     }
